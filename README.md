@@ -33,7 +33,7 @@ MainSocket(string server_name)
 [ _serveName ] is 使用意門SERVER，開啟的SERVER。  預設: looby 。
 
 MainSocketExample:
-_serveSocket = new MainSocket(_serveName);
+serveSocket = new MainSocket(_serveName);
 -----------------------------------------
 初始化 socket 設定
 init(string gateway_IPport, string lobby_IPport)
@@ -41,23 +41,23 @@ init(string gateway_IPport, string lobby_IPport)
 [ lobby_IPport ] is 使用意門LOBBY ，連線位置 + POR。  預設: dev.imoncloud.com:PORT 。
 
 MainSocketExample:
-_serveSocket.init(_linkIPArr[_ctrLinkIPTypeIndexInt] + ":30000" , _linkIPArr[_ctrLinkIPTypeIndexInt] + ":" + _linkPort);
+serveSocket.init(_linkIPArr[_ctrLinkIPTypeIndexInt] + ":30000" , _linkIPArr[_ctrLinkIPTypeIndexInt] + ":" + _linkPort);
 -----------------------------------------
 註冊事件 
 
 連線成功  回傳事件
-_serveSocket._serverConnect.Register (handler_ConnectServer);
+serveSocket._serverConnect.Register (handler_ConnectServer);
 void handler_ConnectServer(){		
 		Debug.Log ("handler_ConnectServer");
 	}
 斷線  回傳事件
-_serveSocket._serverDisConnect.Register (handler_DisConnectServer);
+serveSocket._serverDisConnect.Register (handler_DisConnectServer);
 void handler_DisConnectServer(){		
 		Debug.Log ("handler_DisConnectServer");
 	}
 
 接收 封包 事件
-_serveSocket._severReceived.Register (handler_severReceived);
+serveSocket._severReceived.Register (handler_severReceived);
 void handler_severReceived(PacketMessage i_msg){
 		//  String   =  i_msg.packet_name  , Server Return PacketName
 		Debug.Log ("packet_name = "  + i_msg.packet_name);
@@ -68,9 +68,9 @@ void handler_severReceived(PacketMessage i_msg){
 
 -----------------------------------------
 取消註冊事件 UnRegister
-_serveSocket._serverConnect.UnRegister(handler_ConnectServer) ;
- _serveSocket._serverDisConnect.UnRegister (handler_DisConnectServer);
-_serveSocket._severReceived.UnRegister (handler_severReceived);
+serveSocket._serverConnect.UnRegister(handler_ConnectServer) ;
+serveSocket._serverDisConnect.UnRegister (handler_DisConnectServer);
+serveSocket._severReceived.UnRegister (handler_severReceived);
 
 -----------------------------------------
 發送 封包  方式   bool sendPacket(string packet_name, ref JObject para)
@@ -78,7 +78,7 @@ void test_sendTestToServer(){
 		JObject para = new JObject(
 			new JProperty("DataName", "DataVar")
 			);
-		_serveSocket.sendToServer("TEST_EVENT", ref para);
+		serveSocket.sendToServer("TEST_EVENT", ref para);
 }
 
 # 接收封包 and 發送封包 相關  意門SERVER 
@@ -90,9 +90,9 @@ void test_sendTestToServer(){
 		JObject para = new JObject(
 			new JProperty("DataName", "DataVar")
 			);
-		_serveSocket.sendToServer("TEST_EVENT", ref para);
+		serveSocket.sendToServer("TEST_EVENT", ref para);
 }
-		_serveSocket.sendToServer(處理封包名稱, 傳入的DATA JSON格式);
+		serveSocket.sendToServer(處理封包名稱, 傳入的DATA JSON格式);
 
 void handler_severReceived(PacketMessage i_msg){
 		//	i_msg.packet_name			String
