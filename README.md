@@ -27,26 +27,32 @@ Unity 樣板介面 --  在Unity 宣告 GAMEOBJECT 掛上 MainSocketExample.cs �
 此為簡易版本。
 需使用更多功能，要繼承 ICPacketLogic CLASS
 
-------------------------------------------
 宣告 socket 
+------------------------------------------
 
 MainSocket(string server_name)
-serveName is 使用意門SERVER，開啟的SERVER。  預設: looby 。
+serveName is 使用意門SERVER，開啟的SERVER。
+預設: looby 。
 
 MainSocketExample:
 serveSocket = new MainSocket(_serveName);
------------------------------------------
+
 初始化 socket 設定
+-----------------------------------------
 
 init(string gateway_IPport, string lobby_IPport)
 
-gateway_IPport  is 使用意門SERVER，連線位置 + PORT 。  例如 : dev.imoncloud.com:30000 。
-lobby_IPport is 使用意門LOBBY ，連線位置 + POR。  預設: dev.imoncloud.com:PORT 。
+gateway_IPport  is 使用意門SERVER，連線位置 + PORT 。
+例如 : dev.imoncloud.com:30000 。
+
+lobby_IPport is 使用意門LOBBY ，連線位置 + POR。
+預設: dev.imoncloud.com:PORT 。
 
 MainSocketExample:
 serveSocket.init(_linkIPArr[_ctrLinkIPTypeIndexInt] + ":30000" , _linkIPArr[_ctrLinkIPTypeIndexInt] + ":" + _linkPort);
------------------------------------------
+
 註冊事件 
+------------------------------------------
 
 
 連線成功  回傳事件
@@ -64,8 +70,8 @@ serveSocket._severReceived.Register (handler_severReceived);
 
 void handler_severReceived(PacketMessage i_msg){}
 
------------------------------------------
 取消註冊事件 UnRegister
+------------------------------------------
 
 serveSocket._serverConnect.UnRegister(handler_ConnectServer) ;
 
@@ -73,8 +79,11 @@ serveSocket._serverDisConnect.UnRegister (handler_DisConnectServer);
 
 serveSocket._severReceived.UnRegister (handler_severReceived);
 
------------------------------------------
+
+
 發送 封包  方式   bool sendPacket(string packet_name, ref JObject para)
+------------------------------------------
+
 void test_sendTestToServer(){
 		JObject para = new JObject(
 			new JProperty("DataName", "DataVar")
