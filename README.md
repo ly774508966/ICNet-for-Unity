@@ -69,7 +69,9 @@ void handler_severReceived(PacketMessage i_msg){
 -----------------------------------------
 取消註冊事件 UnRegister
 serveSocket._serverConnect.UnRegister(handler_ConnectServer) ;
+
 serveSocket._serverDisConnect.UnRegister (handler_DisConnectServer);
+
 serveSocket._severReceived.UnRegister (handler_severReceived);
 
 -----------------------------------------
