@@ -20,7 +20,11 @@ MainSocketExample.cs
 
 SocketExample.unity
 Unity 樣板介面 --  在Unity 宣告 GAMEOBJECT 掛上 MainSocketExample.cs 程式
-
+使用後，可看到Socket_lobby 元件。
+可在Socket_lobby UNITY 元件資訊上，設定相關資訊。
+ServerName 
+ServerPort
+ServerType
 
 # 使用說明 MainSocket.cs 
 
