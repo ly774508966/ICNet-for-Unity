@@ -24,6 +24,7 @@ using System.Reflection;  // reflection namespace
 // for JSON preparation
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
+using UnityEngine;
 
 //using ImonCloud;
 
@@ -97,6 +98,7 @@ namespace ImonCloud
             // prevent multiple-init
             if (_net != null)
                 return;
+
 
             _net = ICNet.getInstance();
             _net.init(gateway_IPport, lobby_IPport);
