@@ -29,45 +29,44 @@ Unity 樣板介面 --  在Unity 宣告 GAMEOBJECT 掛上 MainSocketExample.cs �
 
 ------------------------------------------
 宣告 socket 
+
 MainSocket(string server_name)
-[ _serveName ] is 使用意門SERVER，開啟的SERVER。  預設: looby 。
+serveName is 使用意門SERVER，開啟的SERVER。  預設: looby 。
 
 MainSocketExample:
 serveSocket = new MainSocket(_serveName);
 -----------------------------------------
 初始化 socket 設定
+
 init(string gateway_IPport, string lobby_IPport)
-[ gateway_IPport ] is 使用意門SERVER，連線位置 + PORT 。  例如 : dev.imoncloud.com:30000 。
-[ lobby_IPport ] is 使用意門LOBBY ，連線位置 + POR。  預設: dev.imoncloud.com:PORT 。
+
+gateway_IPport  is 使用意門SERVER，連線位置 + PORT 。  例如 : dev.imoncloud.com:30000 。
+lobby_IPport is 使用意門LOBBY ，連線位置 + POR。  預設: dev.imoncloud.com:PORT 。
 
 MainSocketExample:
 serveSocket.init(_linkIPArr[_ctrLinkIPTypeIndexInt] + ":30000" , _linkIPArr[_ctrLinkIPTypeIndexInt] + ":" + _linkPort);
 -----------------------------------------
 註冊事件 
 
+
 連線成功  回傳事件
 serveSocket._serverConnect.Register (handler_ConnectServer);
-void handler_ConnectServer(){		
-		Debug.Log ("handler_ConnectServer");
-	}
+
+void handler_ConnectServer(){}
+
 斷線  回傳事件
 serveSocket._serverDisConnect.Register (handler_DisConnectServer);
-void handler_DisConnectServer(){		
-		Debug.Log ("handler_DisConnectServer");
-	}
+
+void handler_DisConnectServer(){}
 
 接收 封包 事件
 serveSocket._severReceived.Register (handler_severReceived);
-void handler_severReceived(PacketMessage i_msg){
-		//  String   =  i_msg.packet_name  , Server Return PacketName
-		Debug.Log ("packet_name = "  + i_msg.packet_name);
-		//  String   =  i_msg.para  ,  Json String Type
-		Debug.Log ("packet_data = "  + i_msg.para);
-		Debug.Log ("-----");
-}
+
+void handler_severReceived(PacketMessage i_msg){}
 
 -----------------------------------------
 取消註冊事件 UnRegister
+
 serveSocket._serverConnect.UnRegister(handler_ConnectServer) ;
 
 serveSocket._serverDisConnect.UnRegister (handler_DisConnectServer);
