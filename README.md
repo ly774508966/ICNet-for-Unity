@@ -130,5 +130,4 @@ l_handlers.處理封包名稱 = function (event) {
 	event.done( 回傳封包名稱,資料物件 JSON格式 ，純文字 STRING  );
 
 }
-		
-		
+
