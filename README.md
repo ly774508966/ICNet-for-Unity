@@ -93,10 +93,11 @@ serveSocket._severReceived.UnRegister (handler_severReceived);
 發送 封包  方式   bool sendPacket(string packet_name, ref JObject para)
 ------------------------------------------
 
+serveSocket.sendToServer(處理封包名稱, 傳入的DATA JSON格式);
 void test_sendTestToServer(){
 		JObject para = new JObject(
 			new JProperty("DataName", "DataVar")
-			);
+		);
 		serveSocket.sendToServer("TEST_EVENT", ref para);
 }
 
@@ -105,13 +106,17 @@ void test_sendTestToServer(){
 ----------------------------
 // 客戶端  CLINET SIDE   
 ----------------------------
+
 void test_sendTestToServer(){
+
 		JObject para = new JObject(
-			new JProperty("DataName", "DataVar")
-			);
+		new JProperty("DataName", "DataVar")
+		);
+		
 		serveSocket.sendToServer("TEST_EVENT", ref para);
 }
-		serveSocket.sendToServer(處理封包名稱, 傳入的DATA JSON格式);
+
+serveSocket.sendToServer(處理封包名稱, 傳入的DATA JSON格式);
 
 void handler_severReceived(PacketMessage i_msg){
 		//	i_msg.packet_name			String
